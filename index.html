@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python</title>
+    <style>
+        /* General Styles */
+        body, html {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5; /* Light background color for the whole page */
+            scroll-behavior: smooth; /* Smooth scrolling */
+            height: 100%; /* Allow body and html to grow with content */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            /* width: 90%;
+            max-width: 1200px; */
+            background-color: #ffffff; /* White background for the container */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 60px; /* Add margin to compensate for the fixed navbar */
+        }
+
+        .main-content {
+            display: flex;
+            width: 100%;
+        }
+
+        /* Video Container */
+        .video-container {
+            flex: 3;
+            /* padding: 20px; */
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            /* margin-bottom: 20px; */
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Playlist */
+        .playlist {
+            flex: 1;
+            background-color: #333; /* Dark background for the playlist */
+            color: #fff;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: calc(100vh - 40px); /* Adjust height based on your needs */
+            overflow-y: auto;
+        }
+
+        .playlist-item {
+            padding: 15px;
+            background-color: #444; /* Darker gray for playlist items */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .playlist-item:hover {
+            background-color: #555; /* Slightly lighter gray on hover */
+            transform: scale(1.05);
+        }
+
+        .playlist-item.active {
+            background-color: #ff0000; /* Red background for the active item */
+        }
+
+        /* Comments Section */
+        .comments-section {
+            padding: 20px;
+            background-color: #333; /* Dark background for comments section */
+            color: #fff; /* Text color */
+            border-top: 1px solid #444; /* Darker border to match the background */
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .comments-section h2 {
+            margin: 0;
+            font-size: 18px;
+            color: #fff; /* White text color for the heading */
+        }
+
+        .comments-list {
+            max-height: 300px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .comment {
+            padding: 12px;
+            background-color: #444; /* Darker gray background for individual comments */
+            border: 1px solid #555; /* Slightly lighter border for comments */
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            color: #fff; /* White text color for comments */
+        }
+
+        .comment-form {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .comment-form textarea {
+            flex: 1;
+            padding: 12px;
+            border-radius: 20px;
+            border: 1px solid #555;
+            resize: none;
+            font-size: 16px;
+            color: #333;
+            background-color: #fff; /* White background for textarea */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: border-color 0.3s;
+        }
+
+        .comment-form textarea:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .comment-form button {
+            padding: 12px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .comment-form button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #333;
+            padding: 10px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-item {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-item:hover {
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="file:///C:/Users/Aashutosh%20Tiwari/OneDrive/Desktop/html/index.html" class="nav-item">C++</a>
+        <a href="#C:\Users\Aashutosh Tiwari\OneDrive\Desktop\html\demo1.html" class="nav-item">Python</a>
+    </nav>
+    <div class="container">
+        <div class="main-content">
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <iframe id="videoPlayer" src="https://www.youtube.com/embed/_xQNeOTRyig" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="playlist">
+                <div class="playlist-item" onclick="playVideo('_xQNeOTRyig');">Intro to Python</div>
+                <div class="playlist-item" onclick="playVideo('jaie0C-uZug');">Oops</div>
+                <div class="playlist-item" onclick="playVideo('2WFg2JCaMuc');">Class and objects</div>
+                <div class="playlist-item" onclick="playVideo('DJqWNfu0guk');">Inheritance</div>
+                <div class="playlist-item" onclick="playVideo('pcMSlWLKzOE');">Polymorphism</div>
+                <div class="playlist-item" onclick="playVideo('-_uNayxaQoU');">Exception handling</div>
+            </div>
+        </div>
+        <div class="comments-section">
+            <h2>Comments</h2>
+            <div class="comments-list" id="commentsList">
+                <!-- Comments will be dynamically added here -->
+            </div>
+            <div class="comment-form">
+                <textarea id="commentInput" placeholder="Add a comment..." rows="3"></textarea>
+                <button onclick="addComment()">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function playVideo(videoId) {
+            var iframe = document.getElementById('videoPlayer');
+            iframe.src = 'https://www.youtube.com/embed/' + videoId;
+            var items = document.querySelectorAll('.playlist-item');
+            items.forEach(function(item) {
+                item.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        function addComment() {
+            var commentInput = document.getElementById('commentInput');
+            var commentText = commentInput.value.trim();
+            if (commentText) {
+                var commentsList = document.getElementById('commentsList');
+                var commentElement = document.createElement('div');
+                commentElement.className = 'comment';
+                commentElement.textContent = commentText;
+                commentsList.appendChild(commentElement);
+                commentInput.value = '';
+            }
+        }
+    </script>
+</body>
+</html>
